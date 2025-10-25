@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CO2-Transparenz</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="lang-de">
+  <header>
+    <div class="header-container">
+      <div class="branding">
+        <img src="images/co2_logo.png" alt="CO2 Logo" class="logo" />
+        <h1 id="site-title">CO2-Transparenz</h1>
+      </div>
+      <nav class="global-nav">
+        <ul>
+          <li><a href="#">Startseite</a></li>
+          <li><a href="#data-section">Emissionen</a></li>
+          <li><a href="#">Über uns</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="language-switch">
+        <button id="lang-toggle">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="content-wrapper">
+    <aside class="local-nav">
+      <h2>Emissionen</h2>
+      <ul>
+        <li><a id="lnkTable" href="#data-table">Emissionstabelle</a></li>
+        <li><a id="lnkCountry" href="#countryFilter">Nach Land filtern</a></li>
+        <li><a id="lnkCompany" href="#companyFilter">Nach Unternehmen filtern</a></li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <section id="data-section">
+        <h2 id="contentHeading">CO₂-Emissionen nach Unternehmen und Land</h2>
+        <p id="introText">
+          Diese Tabelle zeigt fiktive Daten, welche die jährlichen CO₂-Emissionen
+          verschiedener Unternehmen und Länder vergleichen. Nutzen Sie die Filter,
+          um spezifische Länder oder Unternehmen anzuzeigen.
+        </p>
+
+        <div class="filters">
+          <label for="countryFilter">Land:</label>
+          <select id="countryFilter">
+            <option value="all">Alle</option>
+          </select>
+
+          <label for="companyFilter">Unternehmen:</label>
+          <input type="text" id="companyFilter" placeholder="Unternehmenssuche..." />
+        </div>
+
+        <table id="data-table">
+          <caption>Jährliche CO₂-Emissionen nach Unternehmen und Land</caption>
+          <thead>
+            <tr>
+              <th data-col="country">Land &#x25B4;&#x25BE;</th>
+              <th data-col="company">Unternehmen &#x25B4;&#x25BE;</th>
+              <th data-col="emissions">Emissionen (Mt) &#x25B4;&#x25BE;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>USA</td><td>Contoso Inc.</td><td>150</td></tr>
+            <tr><td>Deutschland</td><td>Beispiel AG</td><td>50</td></tr>
+            <tr><td>China</td><td>Acme Corp</td><td>300</td></tr>
+            <tr><td>USA</td><td>Globex Corp</td><td>200</td></tr>
+            <tr><td>Indien</td><td>EnergyCo</td><td>180</td></tr>
+            <tr><td>Deutschland</td><td>Muster GmbH</td><td>90</td></tr>
+            <tr><td>Brasilien</td><td>EcoPower SA</td><td>75</td></tr>
+            <tr><td>China</td><td>Red Dragon Ltd</td><td>250</td></tr>
+            <tr><td>Kanada</td><td>Maple Energy</td><td>110</td></tr>
+            <tr><td>USA</td><td>ValueCorp</td><td>130</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>
+      © 2025 Climate Transparency Initiative e.V. – Alle Rechte vorbehalten.
+      <a id="linkImprint" href="#">Impressum</a> |
+      <a id="linkPrivacy" href="#">Datenschutz</a>
+    </p>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
