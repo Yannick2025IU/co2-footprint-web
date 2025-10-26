@@ -1,44 +1,77 @@
 <!DOCTYPE html>
+<!--
+  Diese Datei ist die Startseite der CO2-Transparenz-Webseite.
+-->
 <html lang="de">
 <head>
+  <!-- Seitenkodierung -->
   <meta charset="UTF-8" />
+  <!-- Responsives Verhalten auf Mobilgeräten -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Seitentitel (Browser-Tab) -->
   <title>CO2-Transparenz</title>
+
+  <!-- Zentrales Stylesheet (liegt im Unterordner css) -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
+<!--
+  Die Body-Klasse steuert auch das Layout der lokalen Navigation:
+  lang-de  => Sidebar links
+  lang-en  => Sidebar rechts (wird per JS umgeschaltet)
+-->
 <body class="lang-de">
+
+  <!-- HEADER: Logo, Titel, globale Navigation, Sprachumschalter -->
   <header>
     <div class="header-container">
+      <!-- Logo + Titel -->
       <div class="branding">
+        <!-- Platzhalter-Logo. Falls nicht vorhanden, Bilddatei in /images ablegen -->
         <img src="images/co2_logo.png" alt="CO2 Logo" class="logo" />
         <h1 id="site-title">CO2-Transparenz</h1>
       </div>
-      <nav class="global-nav">
+
+      <!-- Globale Hauptnavigation der Seite -->
+      <nav class="global-nav" aria-label="Hauptnavigation">
         <ul>
+          <!-- Startseite ist hier nur ein Platzhalter-Link -->
           <li><a href="#">Startseite</a></li>
+          <!-- Verlinkt auf den Datenbereich weiter unten -->
           <li><a href="#data-section">Emissionen</a></li>
           <li><a href="#">Über uns</a></li>
           <li><a href="#">Kontakt</a></li>
         </ul>
       </nav>
+
+      <!-- Button zum Sprachwechsel (DE ↔ EN). Der Text wechselt per JS. -->
       <div class="language-switch">
-        <button id="lang-toggle">EN</button>
+        <button id="lang-toggle" type="button">EN</button>
       </div>
     </div>
   </header>
 
+  <!-- HAUPTBEREICH: Lokale Navigation + Inhalt -->
   <div class="content-wrapper">
-    <aside class="local-nav">
+
+    <!-- Lokale Navigation: Sprungmarken innerhalb des Datenbereichs -->
+    <aside class="local-nav" aria-label="Lokale Navigation">
       <h2>Emissionen</h2>
       <ul>
+        <!-- Verweist auf die Tabelle -->
         <li><a id="lnkTable" href="#data-table">Emissionstabelle</a></li>
+        <!-- Verweist auf das Länder-Dropdown -->
         <li><a id="lnkCountry" href="#countryFilter">Nach Land filtern</a></li>
+        <!-- Verweist auf das Suchfeld für Unternehmen -->
         <li><a id="lnkCompany" href="#companyFilter">Nach Unternehmen filtern</a></li>
       </ul>
     </aside>
 
+    <!-- Hauptinhalt: Einleitung, Filter, Tabelle -->
     <main class="content">
-      <section id="data-section">
+      <!-- Datenbereich; ID wird in der globalen Navigation verwendet -->
+      <section id="data-section" aria-labelledby="contentHeading">
+        <!-- Überschrift und Einleitungstext sind i18n-fähig (werden per JS übersetzt) -->
         <h2 id="contentHeading">CO₂-Emissionen nach Unternehmen und Land</h2>
         <p id="introText">
           Diese Tabelle zeigt fiktive Daten, welche die jährlichen CO₂-Emissionen
@@ -46,26 +79,39 @@
           um spezifische Länder oder Unternehmen anzuzeigen.
         </p>
 
+        <!-- Filterleiste: Land (Dropdown) + Unternehmen (Textsuche) -->
         <div class="filters">
+          <!-- Länderfilter; Optionen werden per JS mit vorhandenen Ländern ergänzt -->
           <label for="countryFilter">Land:</label>
           <select id="countryFilter">
+            <!-- "Alle" = kein Länderfilter -->
             <option value="all">Alle</option>
           </select>
 
+          <!-- Freitextsuche für Unternehmensnamen (case-insensitive Teilstring) -->
           <label for="companyFilter">Unternehmen:</label>
-          <input type="text" id="companyFilter" placeholder="Unternehmenssuche..." />
+          <input
+            type="text"
+            id="companyFilter"
+            placeholder="Unternehmenssuche..."
+            aria-label="Unternehmenssuche"
+          />
         </div>
 
+        <!-- Datentabelle: sortierbar über Klick auf die Spaltenköpfe -->
         <table id="data-table">
+          <!-- Caption hilft Screenreadern und erklärt kurz den Tabelleninhalt -->
           <caption>Jährliche CO₂-Emissionen nach Unternehmen und Land</caption>
           <thead>
             <tr>
-              <th data-col="country">Land &#x25B4;&#x25BE;</th>
-              <th data-col="company">Unternehmen &#x25B4;&#x25BE;</th>
-              <th data-col="emissions">Emissionen (Mt) &#x25B4;&#x25BE;</th>
+              <!-- data-col wird vom JS genutzt, die Pfeile sind nur ein visueller Hinweis -->
+              <th scope="col" data-col="country">Land &#x25B4;&#x25BE;</th>
+              <th scope="col" data-col="company">Unternehmen &#x25B4;&#x25BE;</th>
+              <th scope="col" data-col="emissions">Emissionen (Mt) &#x25B4;&#x25BE;</th>
             </tr>
           </thead>
           <tbody>
+            <!-- Mindestens 10 fiktive Datensätze; bei Bedarf einfach erweitern -->
             <tr><td>USA</td><td>Contoso Inc.</td><td>150</td></tr>
             <tr><td>Deutschland</td><td>Beispiel AG</td><td>50</td></tr>
             <tr><td>China</td><td>Acme Corp</td><td>300</td></tr>
@@ -82,14 +128,25 @@
     </main>
   </div>
 
+  <!-- FOOTER: Rechtliche Links/Angaben -->
   <footer>
     <p>
+      <!-- Der Text vor dem Gedankenstrich bleibt, der Rest wird i18n-fähig per JS gesetzt -->
       © 2025 Climate Transparency Initiative e.V. – Alle Rechte vorbehalten.
+      <!-- Diese Linktexte werden ebenfalls per JS in EN übersetzt -->
       <a id="linkImprint" href="#">Impressum</a> |
       <a id="linkPrivacy" href="#">Datenschutz</a>
     </p>
   </footer>
 
+  <!--
+    JavaScript für:
+    - Sprachumschaltung (DE/EN)
+    - Befüllen des Länder-Dropdowns
+    - Live-Filter (Land/Unternehmen)
+    - Sortierung der Tabelle
+    Liegt im Unterordner js 
+  -->
   <script src="js/script.js" defer></script>
 </body>
 </html>
